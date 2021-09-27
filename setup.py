@@ -23,7 +23,7 @@ test_requirements = []
 setup(
     author="Juan Carlos Calvo Jackson",
     author_email="juancarlos.calvo@quantumblack.com",
-    python_requires=">=3.6",
+    python_requires="==3.6",
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
@@ -31,8 +31,6 @@ setup(
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
     ],
     description="1rst project of the Udacity nanodegree program",
     entry_points={
