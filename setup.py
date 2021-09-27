@@ -14,7 +14,7 @@ requirements = [
     "Click>=7.0",
     "unityagents==0.4.0",
     "numpy~=1.19.5",
-    "dynaconf~=3.1.7",
+    "dynaconf~=3.1",
     "jinja2~=3.0.1",
 ]
 
