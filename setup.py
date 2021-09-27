@@ -50,5 +50,5 @@ setup(
     url="https://github.com/juan-carlos-calvo/navigation",
     version="0.2.0",
     zip_safe=False,
-    dependency_links=["unityagents"],
+    dependency_links=["file://unityagents"],
 )
