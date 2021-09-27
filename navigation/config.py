@@ -4,7 +4,7 @@ from dynaconf import Dynaconf, Validator
 # -- Then you create your `settings` instance
 settings = Dynaconf(
     settings_files=[  # Paths or globs to any toml|yaml|ini|json|py
-        "configs/default_settings.toml",  # a file for default settings
+        "navigation/configs/default_settings.toml",  # a file for default settings
         # "navigation/configs/default_settings.toml"
         # "configs/settings.toml",  # a file for main settings
         # "configs/.secrets.toml",  # a file for sensitive data (gitignored)
