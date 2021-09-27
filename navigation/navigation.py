@@ -1,9 +1,10 @@
 """Main module."""
 
 import numpy as np
-from config import settings
 
 from unityagents import UnityEnvironment
+
+from .config import settings
 
 env = UnityEnvironment(file_name=settings.unity_env.file_name)
 
@@ -15,14 +16,14 @@ brain = env.brains[brain_name]
 env_info = env.reset(train_mode=True)[brain_name]
 
 # number of agents in the environment
-print('Number of agents:', len(env_info.agents))
+print("Number of agents:", len(env_info.agents))
 
 # number of actions
 action_size = brain.vector_action_space_size
-print('Number of actions:', action_size)
+print("Number of actions:", action_size)
 
-# examine the state space 
+# examine the state space
 state = env_info.vector_observations[0]
-print('States look like:', state)
+print("States look like:", state)
 state_size = len(state)
-print('States have length:', state_size)
+print("States have length:", state_size)
