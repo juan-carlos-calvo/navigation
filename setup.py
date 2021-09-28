@@ -16,6 +16,9 @@ requirements = [
     "numpy~=1.19.5",
     "dynaconf~=3.1",
     "jinja2~=3.0.1",
+    "torch>=1.8.1",
+    "stable-baselines3[extra]~=1.2.0",
+    "gym_unity>=0.28.0.dev0",
 ]
 
 test_requirements = []

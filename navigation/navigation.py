@@ -1,29 +1,49 @@
 """Main module."""
 
 import numpy as np
+import stable_baselines3 as sb3
+from config import settings
+from gym_wrapper import UnityEnvToGym
+
+# from stable_baselines3.her import HerReplayBuffer
+from stable_baselines3.common.buffers import ReplayBuffer
 
 from unityagents import UnityEnvironment
 
-from .config import settings
 
-env = UnityEnvironment(file_name=settings.unity_env.file_name)
+def train(env, model_class, save_path):
+    print({**settings.model_kwargs})
+    model = model_class(
+        settings.model.policy,
+        env,
+        **settings.model_kwargs,
+    )
+    model.learn(**settings.learn_kwargs)
+    model.save(save_path)
 
-# get the default brain
-brain_name = env.brain_names[0]
-brain = env.brains[brain_name]
 
-# reset the environment
-env_info = env.reset(train_mode=True)[brain_name]
+def viz_agent(env, model_class, save_path):
+    # Load the trained agent
+    model = model_class.load(save_path, env=env)
 
-# number of agents in the environment
-print("Number of agents:", len(env_info.agents))
+    # Enjoy trained agent
+    obs = env.reset(train_mode=False)
+    for episose in range(3):
+        obs = env.reset(train_mode=False)
+        for i in range(500):
+            action, _states = model.predict(obs, deterministic=True)
+            obs, rewards, done, info = env.step(action)
+            if done:
+                obs = env.reset(train_mode=False)
+        print(i)
 
-# number of actions
-action_size = brain.vector_action_space_size
-print("Number of actions:", action_size)
 
-# examine the state space
-state = env_info.vector_observations[0]
-print("States look like:", state)
-state_size = len(state)
-print("States have length:", state_size)
+if __name__ == "__main__":
+    # describe_environment()
+    model_class = getattr(sb3, settings.model.alg)
+    save_path = f"{settings.model.alg}_{settings.model.save_path}"
+    print({**settings.unity_env_kwargs})
+    unity_env = UnityEnvironment(**settings.unity_env_kwargs)
+    env = UnityEnvToGym(unity_env)
+    train(env, model_class, save_path)
+    # viz_agent(env, model_class, save_path)

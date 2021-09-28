@@ -1,2 +1,30 @@
-[default.unity_env]
+[default.unity_env_kwargs]
 file_name = "navigation/Banana.app"
+no_graphics = true
+
+[default.learn_kwargs]
+total_timesteps = 600000
+# episode_length = 2000
+# n_eval_episodes = 2000
+
+[default.model_kwargs]
+exploration_final_eps=0.01
+tau=0.001
+learning_rate = 0.0005
+batch_size = 64
+train_freq = 4
+gamma = 0.99
+exploration_fraction= 1
+tensorboard_log="./banana_tensorboard/"
+verbose = 1
+
+[default.model_kwargs.replay_buffer_kwargs]
+max_episode_length=1000
+
+
+[default.model]
+alg="DQN"
+policy="MlpPolicy"
+save_path = 'banana'
+
+
