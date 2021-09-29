@@ -1,6 +1,6 @@
 [default.unity_env_kwargs]
 file_name = "navigation/Banana.app"
-no_graphics = true
+# no_graphics = true
 
 [default.learn_kwargs]
 total_timesteps = 600000
@@ -9,6 +9,9 @@ total_timesteps = 600000
 
 [default.model_kwargs]
 exploration_final_eps=0.01
+target_update_interval=4
+buffer_size=100000
+learning_starts=64
 tau=0.001
 learning_rate = 0.0005
 batch_size = 64
@@ -18,8 +21,8 @@ exploration_fraction= 1
 tensorboard_log="./banana_tensorboard/"
 verbose = 1
 
-[default.model_kwargs.replay_buffer_kwargs]
-max_episode_length=1000
+# [default.model_kwargs.replay_buffer_kwargs]
+# max_episode_length=1000
 
 
 [default.model]

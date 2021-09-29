@@ -5,10 +5,10 @@ import stable_baselines3 as sb3
 from config import settings
 from gym_wrapper import UnityEnvToGym
 
-# from stable_baselines3.her import HerReplayBuffer
-from stable_baselines3.common.buffers import ReplayBuffer
-
 from unityagents import UnityEnvironment
+
+# from stable_baselines3.her import HerReplayBuffer
+# from stable_baselines3.common.buffers import ReplayBuffer
 
 
 def train(env, model_class, save_path):
@@ -45,5 +45,5 @@ if __name__ == "__main__":
     print({**settings.unity_env_kwargs})
     unity_env = UnityEnvironment(**settings.unity_env_kwargs)
     env = UnityEnvToGym(unity_env)
-    train(env, model_class, save_path)
-    # viz_agent(env, model_class, save_path)
+    # train(env, model_class, save_path)
+    viz_agent(env, model_class, save_path)
