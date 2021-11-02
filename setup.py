@@ -2,7 +2,7 @@
 
 """The setup script."""
 
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 with open("README.rst") as readme_file:
     readme = readme_file.read()
@@ -12,6 +12,13 @@ with open("HISTORY.rst") as history_file:
 
 requirements = [
     "Click>=7.0",
+    "unityagents==0.4.0",
+    "numpy~=1.19.5",
+    "dynaconf~=3.1",
+    "jinja2~=3.0.1",
+    "torch>=1.8.1",
+    "stable-baselines3[extra]~=1.2.0",
+    "gym_unity>=0.28.0.dev0",
 ]
 
 test_requirements = []
@@ -27,8 +34,6 @@ setup(
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
     ],
     description="1rst project of the Udacity nanodegree program",
     entry_points={
@@ -46,6 +51,7 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     url="https://github.com/juan-carlos-calvo/navigation",
-    version="0.1.0",
+    version="0.2.0",
     zip_safe=False,
+    dependency_links=["file://unityagents"],
 )
